@@ -9,7 +9,7 @@ const languages = [
 const LanguagePicker = () => {
   const router = useRouter();
   const { locale } = router;
-  const updateLocale = (locale: any) => {
+  const updateLocale = (locale: string) => {
     localStorage.setItem("userPreferredCountry", locale);
     router.push(router.asPath, router.asPath, { locale });
   };
