@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Regex to check whether something has an extension, e.g. .jpg
+// Regex to check whether string something has an extension, e.g. .png
 const PUBLIC_FILE = /\.(.*)$/;
 
 // Next JS Middleware
-export const middleware = async (request: NextRequest) => {
+export const middleware = async (request: NextRequest) => {  
   // Get the information we need from the request object
   const { nextUrl } = request;
 
@@ -14,33 +14,22 @@ export const middleware = async (request: NextRequest) => {
   try {
     const fetchIP = await fetch("https://api.country.is");
     const fetchIPResponseData = await fetchIP.json();
-    const { country } = fetchIPResponseData || "others";
+    const { country } = fetchIPResponseData || "US";
 
     if (
       nextUrl.pathname.startsWith("/_next") ||
       nextUrl.pathname.includes("/api/") ||
+      nextUrl.pathname.startsWith("/static") ||
+      nextUrl.pathname.startsWith("/public") ||
       PUBLIC_FILE.test(nextUrl.pathname)
     ) {
       return;
     }
 
-    // Early return if we are on a locale other than default
+    // return if we are on a locale other than default
     if (nextUrl.locale !== "default") {
-      return undefined;
+      return;
     }
-
-    if (typeof window !== "undefined") {
-      const userSelectedCountry = localStorage.getItem("userPreferredCountry");
-      // return if there is a preffered country choice present and on default locale
-      if (userSelectedCountry && nextUrl.locale === "default") {
-        url.pathname = `/${userSelectedCountry}${nextUrl.pathname}`;
-        return NextResponse.redirect(url);
-      }
-    }
-
-    // We now know:
-    // No cookie that we need to deal with
-    // User has to be on default locale
 
     // Redirect if France
     if (country === "FR") {
@@ -65,4 +54,8 @@ export const middleware = async (request: NextRequest) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const config = {
+  matcher: ["/"],
 };

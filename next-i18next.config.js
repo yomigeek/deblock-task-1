@@ -3,11 +3,11 @@ const path = require("path");
 
 module.exports = {
   i18n: {
-    // The locales supported in the application
+    // The locales supported in the app
     locales: ["default", "en", "en-GB", "fr-FR"],
     defaultLocale: "default",
     localeDetection: false,
   },
-  // react: { useSuspense: false },
+  react: { useSuspense: false },
   localePath: path.resolve("./public/locales"),
 };

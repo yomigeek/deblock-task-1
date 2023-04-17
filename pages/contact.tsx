@@ -12,7 +12,7 @@ const Contact = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
-        <title>DeBlock Contact</title>
+        <title>DeBlock - Contact</title>
       </Head>
       <div className="max-w-[960px] my-0 mx-auto p-8">
         <Header />
@@ -31,6 +31,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
       "common",
       "navigation",
     ])),
+    fallback: false,
   },
 });
 
