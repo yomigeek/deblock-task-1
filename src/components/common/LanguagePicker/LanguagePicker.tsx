@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-// import useLocale from "src/utils/hooks/useLocale";
 import { tx } from "@twind/core";
 
 const languages = [
@@ -13,10 +12,8 @@ const LanguagePicker = () => {
   const updateLocale = (locale: any) =>
     router.push(router.asPath, router.asPath, { locale });
 
-  console.log(locale);
-
   return (
-    <div className="petlab-container first relative z-50 -mb-4 flex justify-end !pl-0 pb-3 small-desktop:pt-6">
+    <div className="first relative z-50 -mb-4 flex justify-end !pl-0 pb-3 small-desktop:pt-6">
       {languages.map(({ value, name }) => (
         <div
           key={value}

@@ -16,8 +16,6 @@ export const middleware = async (request: NextRequest) => {
     const fetchIPResponseData = await fetchIP.json();
     const { country } = fetchIPResponseData || "others";
 
-    console.log({ country });
-
     if (
       nextUrl.pathname.startsWith("/_next") ||
       nextUrl.pathname.includes("/api/") ||
