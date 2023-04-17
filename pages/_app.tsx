@@ -10,14 +10,15 @@ const App = ({ Component, pageProps }: AppProps) => {
   const { pathname, asPath } = router;
 
   useEffect(() => {
-    if (!window || !localStorage) return;
-
+    if (typeof window === "undefined" || !localStorage) {
+      return;
+    }
     const userSelectedCountry = localStorage.getItem("userPreferredCountry");
 
-    if (userSelectedCountry) {
+    if (userSelectedCountry && router.locale !== userSelectedCountry) {
       router.push(pathname, asPath, { locale: userSelectedCountry });
     }
-  }, [router.locale]);
+  }, [router.locale, pathname, asPath]);
 
   return <Component {...pageProps} />;
 };

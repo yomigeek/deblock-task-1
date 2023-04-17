@@ -24,7 +24,7 @@ const Header = () => {
           <ul className="mt-5">
             <li
               onClick={() => router.push("/contact")}
-              className="cursor-pointer text-right text-blue-700 mb-5"
+              className="cursor-pointer text-right text-blue-900 mb-5"
             >
               {t("contactNav")}
             </li>
