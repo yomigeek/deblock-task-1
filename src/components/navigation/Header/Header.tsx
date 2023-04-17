@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -6,6 +7,7 @@ import Logo from "public/images/pngs/pay-logo.png";
 import LanguagePicker from "@components/common/LanguagePicker";
 
 const Header = () => {
+  const { t } = useTranslation("navigation");
   const router = useRouter();
   const { locale } = router;
 
@@ -24,7 +26,7 @@ const Header = () => {
               onClick={() => router.push("/contact")}
               className="cursor-pointer text-right text-blue-700 mb-5"
             >
-              Contact Us
+              {t("contactNav")}
             </li>
           </ul>
         </nav>

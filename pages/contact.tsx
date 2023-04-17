@@ -26,7 +26,11 @@ const Contact = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? "en", ["contact", "common"])),
+    ...(await serverSideTranslations(locale ?? "en", [
+      "contact",
+      "common",
+      "navigation",
+    ])),
   },
 });
 

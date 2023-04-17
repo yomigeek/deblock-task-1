@@ -32,7 +32,7 @@ const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? "en", ["home", "common"])),
+    ...(await serverSideTranslations(locale ?? "en", ["home", "common", "navigation"])),
   },
 });
 
