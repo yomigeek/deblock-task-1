@@ -29,11 +29,14 @@ export const middleware = async (request: NextRequest) => {
       return undefined;
     }
 
-    // Early return if there is a cookie present and on default locale
-    // if (cookies.NEXT_LOCALE && nextUrl.locale === "default") {
-    //   url.pathname = `/${cookies.NEXT_LOCALE}${nextUrl.pathname}`;
-    //   return NextResponse.redirect(url);
-    // }
+    if (typeof window !== "undefined") {
+      const userSelectedCountry = localStorage.getItem("userPreferredCountry");
+      // return if there is a preffered country choice present and on default locale
+      if (userSelectedCountry && nextUrl.locale === "default") {
+        url.pathname = `/${userSelectedCountry}${nextUrl.pathname}`;
+        return NextResponse.redirect(url);
+      }
+    }
 
     // We now know:
     // No cookie that we need to deal with

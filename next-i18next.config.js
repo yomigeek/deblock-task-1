@@ -9,4 +9,5 @@ module.exports = {
     localeDetection: false,
   },
   // react: { useSuspense: false },
+  localePath: path.resolve("./public/locales"),
 };
