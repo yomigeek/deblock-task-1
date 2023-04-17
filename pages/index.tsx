@@ -1,13 +1,17 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 import Header from "@components/navigation/Header";
-import AccountTypes from "@modules/AccountTypes";
-import TheWhys from "@modules/TheWhys";
+import ThreeCardsBlock from "@modules/ThreeCardsBlock";
 
 import HeroImage from "public/images/jpegs/hero.jpeg";
 import Head from "next/head";
 
-export default function Home() {
+const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { t } = useTranslation("home");
+
   return (
     <>
       <Head>
@@ -19,10 +23,17 @@ export default function Home() {
           <div>
             <Image alt="hero-image" src={HeroImage} className="rounded-lg" />
           </div>
-          <TheWhys />
-          <AccountTypes />
+          <ThreeCardsBlock title={t("title")} />
         </main>
       </div>
     </>
   );
-}
+};
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? "en", ["home", "common"])),
+  },
+});
+
+export default Home;

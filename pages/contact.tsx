@@ -1,24 +1,33 @@
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 import Header from "@components/navigation/Header";
-import TheWhys from "@modules/TheWhys";
+import ThreeCardsBlock from "@modules/ThreeCardsBlock";
 import Head from "next/head";
 
-const Home = () => {
+const Contact = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { t } = useTranslation("contact");
+
   return (
     <>
       <Head>
-        <title>DeBlock Task 1</title>
+        <title>DeBlock Contact</title>
       </Head>
       <div className="max-w-[960px] my-0 mx-auto p-8">
         <Header />
         <main>
-          <div className="text-center my-5 text-[15px] tablet:text-[25px]">
-            Contact Us
-          </div>
-          <TheWhys />
+          <ThreeCardsBlock title={t("title")} />
         </main>
       </div>
     </>
   );
 };
 
-export default Home;
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? "en", ["contact", "common"])),
+  },
+});
+
+export default Contact;

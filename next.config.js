@@ -1,14 +1,9 @@
 /** @type {import('next').NextConfig} */
+const { i18n } = require("./next-i18next.config");
+
 const nextConfig = {
   reactStrictMode: true,
-  i18n: {
-    // The locales supported in the application
-    locales: ["default", "en", "en-GB", "fr-FR"],
-    // This is the default locale you want to be used when visiting
-    // a non-locale prefixed path e.g. `/hello`
-    defaultLocale: "default",
-    localeDetection: false,
-  },
+  i18n,
 };
 
 module.exports = nextConfig;

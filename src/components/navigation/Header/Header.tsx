@@ -14,7 +14,7 @@ const Header = () => {
       <header className="flex mb-8 items-center justify-between">
         <div>
           <Link href="/" locale={locale}>
-            <Image alt="logo" src={Logo} width={50} height={10} />
+            <Image alt="logo" src={Logo} width={40} height={10} />
           </Link>
         </div>
         <nav>

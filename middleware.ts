@@ -39,13 +39,13 @@ export const middleware = async (request: NextRequest) => {
     // No cookie that we need to deal with
     // User has to be on default locale
 
-    // Redirect All France
+    // Redirect if France
     if (country === "FR") {
       url.pathname = `/fr-FR${nextUrl.pathname}`;
       return NextResponse.redirect(url);
     }
 
-    // Redirect all Great Britain
+    // Redirect if Great Britain
     if (country === "GB") {
       url.pathname = `/en-GB${nextUrl.pathname}`;
       return NextResponse.redirect(url);

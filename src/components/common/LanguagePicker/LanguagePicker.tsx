@@ -13,7 +13,7 @@ const LanguagePicker = () => {
     router.push(router.asPath, router.asPath, { locale });
 
   return (
-    <div className="first relative z-50 -mb-4 flex justify-end !pl-0 pb-3 small-desktop:pt-6">
+    <div className="relative z-50 -mb-4 flex justify-end !pl-0 pb-3 small-desktop:pt-6">
       {languages.map(({ value, name }) => (
         <div
           key={value}
