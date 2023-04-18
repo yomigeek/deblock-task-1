@@ -21,7 +21,7 @@ const LanguagePicker = () => {
           key={value}
           onClick={() => updateLocale(value)}
           className={tx(
-            `cursor-pointer text-sm first:after:(inline-block pl-2 text-blue-900 content-['/']) last:pl-2 hover:text-red-700 text-blue-900	hover:text-blue-600 `,
+            `cursor-pointer text-sm first:after:(inline-block pl-2 text-blue-900 content-['/']) last:pl-2 hover:text-red-700 text-blue-900 hover:text-blue-600 `,
             value === locale && "text-red-700"
           )}
         >
