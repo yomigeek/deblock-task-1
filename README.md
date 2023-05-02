@@ -1,7 +1,7 @@
 # APP Purpose
 Localization Redirect URL - Task 1
 ## Deployed URL
-https://locales-redirect.vercel.app/en-GB
+https://locales-redirect.vercel.app
 ## Local setup
 - Clone the repository - `git clone https://github.com/yomigeek/deblock-task-1.git`
 - Install dependencies - `yarn install`
